@@ -1,4 +1,5 @@
 {
+  "homepage": "https://joshi-durgesh.github.io/RasoiRider",
   "name": "rasoi-rider",
   "version": "1.0.0",
   "description": "",
@@ -18,7 +19,6 @@
   "bugs": {
     "url": "https://github.com/joshi-durgesh/RasoiRider.git"
   },
-  "homepage": "https://github.com/joshi-durgesh/RasoiRider.git",
   "devDependencies": {
     "@babel/core": "^7.23.9",
     "@babel/preset-env": "^7.23.9",
