@@ -1,10 +1,8 @@
 import { useState } from "react";
 import RestaurantCard from "./RestaurantCard";
-import SlidingContentBtn from "./SlidingContentBtn";
 
 const AllRestaurant = ({ data, title }) => {
   const [allRestoData] = useState(data);
-
   return (
     <section className='max-w-6xl mx-auto '>
       <div className='flex justify-between mb-7'>

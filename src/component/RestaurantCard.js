@@ -13,9 +13,6 @@ const RestaurantCard = ({ resData }) => {
     aggregatedDiscountInfoV3,
   } = resData?.info;
 
-  aggregatedDiscountInfoV3
-    ? ({ header, subHeader } = aggregatedDiscountInfoV3)
-    : "";
   const { slaString } = sla;
 
   return (
@@ -30,7 +27,9 @@ const RestaurantCard = ({ resData }) => {
         />
         <div className='absolute w-full h-full top-0 left-0  bg-gradient-to-t from-zinc-900 from-[10%]  to-transparent to-[40%]'></div>
         <h2 className='text-[#ffb545] text-xl font-bold align-middle absolute left-9 bottom-2'>
-          {aggregatedDiscountInfoV3 ? `${header} ${subHeader}` : ""}
+          {aggregatedDiscountInfoV3
+            ? `${aggregatedDiscountInfoV3?.header} ${aggregatedDiscountInfoV3?.subHeader}`
+            : ""}
         </h2>
       </div>
 

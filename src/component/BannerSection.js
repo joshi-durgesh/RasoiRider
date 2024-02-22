@@ -1,4 +1,3 @@
-import { useRef, useState } from "react";
 import BannerItem from "./BannerItem";
 
 const BannerSection = ({ data }) => {
@@ -13,7 +12,7 @@ const BannerSection = ({ data }) => {
 
       <div className='flex gap-3  border-b-[1px]  border-[#ffb545] pb-8 py-4 overflow-auto scrollbar'>
         {bannerData.map((data) => (
-          <BannerItem key={data.id} banData={data} />
+          <BannerItem key={data?.id} banData={data} />
         ))}
       </div>
     </section>

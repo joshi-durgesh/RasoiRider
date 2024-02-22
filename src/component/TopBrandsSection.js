@@ -12,8 +12,8 @@ const TopBrandsSection = ({ data }) => {
       <div className='flex  flex-wrap gap-1'>
         {topBrands.map((brandData) => (
           <RestaurantCard
-            key={brandData.info.id}
-            resId={brandData.info.id}
+            key={brandData?.info?.id}
+            resId={brandData?.info?.id}
             resData={brandData}
           />
         ))}
