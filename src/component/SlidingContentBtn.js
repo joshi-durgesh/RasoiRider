@@ -1,8 +1,9 @@
-const SlidingContentBtn = ({ section, side }) => {
+const SlidingContentBtn = ({ section, side, clickEvent }) => {
   return (
     <button
       id={section + "-btn-" + side}
-      className='bg-gray-200 w-9 h-9 rounded-full'
+      onClick={clickEvent}
+      className='text-[#ffb545] border-[2px] border-[#ffb545] w-9 h-9 rounded-full'
     >
       <span className={"bi bi-arrow-" + side}></span>
     </button>
