@@ -9,8 +9,8 @@ import HeroSection from "./HeroSection";
 
 const Body = () => {
   const [allData, setAllData] = useState(null);
-  const defaulLocation = "lat=17.4356874&lng=78.4331776";
-  const [location, setLocation] = useState(defaulLocation);
+  const defaultLocation = "lat=17.4356874&lng=78.4331776";
+  const [location, setLocation] = useState(defaultLocation);
 
   useEffect(() => {
     fetchAllData();
@@ -29,7 +29,7 @@ const Body = () => {
   }
 
   if (allData === null) {
-    return <BannerSkimmers />;
+    return console.log("no data");
   }
 
   const bannerData = allData[0]?.card?.card;
