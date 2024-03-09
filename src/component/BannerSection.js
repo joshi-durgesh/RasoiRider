@@ -2,6 +2,7 @@ import BannerItem from "./BannerItem";
 import SlidingContentBtn from "./SlidingContentBtn";
 
 const BannerSection = ({ data }) => {
+  // console.log(data);
   const bannerData = data?.gridElements?.infoWithStyle?.info;
   const { title } = data?.header;
 

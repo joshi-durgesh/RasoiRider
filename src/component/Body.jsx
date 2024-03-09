@@ -3,7 +3,7 @@ import BannerSection from "./BannerSection";
 import TopBrandsSection from "./TopBrandsSection";
 import AllRestaurant from "./AllRestaurant";
 import { SWIGGY_API } from "../utils/constant";
-import { BannerSkimmers } from "./Skimmer";
+import { BodySkimmer } from "./Skimmer";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import HeroSection from "./HeroSection";
 
@@ -19,6 +19,7 @@ const Body = () => {
   const fetchAllData = async () => {
     const data = await fetch(SWIGGY_API + location);
     const json = await data.json();
+    console.log(json);
     setAllData(json?.data?.cards);
   };
 
@@ -29,14 +30,43 @@ const Body = () => {
   }
 
   if (allData === null) {
-    return console.log("no data");
+    return <BodySkimmer />;
   }
 
-  const bannerData = allData[0]?.card?.card;
-  const topBrandData = allData[1]?.card?.card;
-  const allRestoSectionTitle = allData[2]?.card?.card?.title;
+  const banData = allData?.filter((data) => {
+    return (
+      data?.card?.card?.gridElements?.infoWithStyle?.["@type"] ===
+      "type.googleapis.com/swiggy.gandalf.widgets.v2.ImageInfoLayoutCard"
+    );
+  });
+
+  console.log(banData);
+  const topData = allData?.filter((data) => {
+    return (
+      data?.card?.card?.gridElements?.infoWithStyle?.["@type"] ===
+      "type.googleapis.com/swiggy.presentation.food.v2.FavouriteRestaurantInfoWithStyle"
+    );
+  });
+  console.log(topData);
+  const restoTitle = allData?.filter((data) => {
+    return (
+      data?.card?.card?.["@type"] ===
+      "type.googleapis.com/swiggy.seo.widgets.v1.BasicContent"
+    );
+  });
+  console.log(restoTitle);
+  const restoData = allData?.filter((data) => {
+    return (
+      data?.card?.card?.gridElements?.infoWithStyle?.["@type"] ===
+      "type.googleapis.com/swiggy.presentation.food.v2.FavouriteRestaurantInfoWithStyle"
+    );
+  });
+  console.log(restoData);
+  const bannerData = banData?.[0]?.card?.card;
+  const topBrandData = topData?.[0]?.card?.card;
+  const allRestoSectionTitle = restoTitle?.[0]?.card?.card?.title;
   const allRestoData =
-    allData[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+    restoData?.[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
 
   return (
     <>

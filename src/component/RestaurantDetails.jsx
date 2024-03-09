@@ -1,6 +1,13 @@
 const RestaurantDetails = ({ menuData }) => {
+  const filterData = menuData?.data?.cards?.filter((data) => {
+    return (
+      data?.card?.card?.["@type"] ===
+      "type.googleapis.com/swiggy.presentation.food.v2.Restaurant"
+    );
+  });
+
   const { name, cuisines, areaName, sla, avgRating, totalRatingsString } =
-    menuData?.data?.cards[2]?.card?.card?.info;
+    filterData?.[0]?.card?.card?.info;
   const { lastMileTravelString } = sla;
 
   return (

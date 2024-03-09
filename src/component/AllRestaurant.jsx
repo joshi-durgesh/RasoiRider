@@ -16,8 +16,8 @@ const AllRestaurant = ({ data, title }) => {
   };
 
   return (
-    <section className='max-w-6xl mx-auto '>
-      <div className='flex justify-between mb-7'>
+    <section className='max-w-6xl mx-auto p-2'>
+      <div className='flex justify-between mb-7 '>
         <h2 className='text-2xl font-bold mb-4 text-[#ffb545]'>{title}</h2>
         <div className='flex gap-3'>
           <SlidingContentBtn

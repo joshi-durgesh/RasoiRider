@@ -1,11 +1,13 @@
 import { useDispatch } from "react-redux";
 import { addItems } from "../utils/cartSlice";
 import { CDN_URL } from "../utils/constant";
+import emptyImg from "../../public/images/no-img.png";
 
 const RestaurantCuisineItems = ({ items }) => {
   const { name, price, description, id, imageId, isVeg, defaultPrice, ribbon } =
     items;
 
+  const imgUrl = imageId ? CDN_URL + imageId : emptyImg;
   const Dispatch = useDispatch();
 
   const handleAddItem = (item) => {
@@ -43,7 +45,7 @@ const RestaurantCuisineItems = ({ items }) => {
             ADD
           </button>
           <div className='w-28 h-24  m-2 rounded-lg overflow-hidden '>
-            <img src={CDN_URL + imageId} className='object-fill w-28 h-24' />
+            <img src={imgUrl} className='object-fill w-28 h-24' />
           </div>
         </div>
       </div>

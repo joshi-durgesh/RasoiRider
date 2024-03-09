@@ -11,9 +11,14 @@ const RestaurantMenu = () => {
   const menuData = useRestaurantMenu(resId);
   const [showIndex, setShowIndex] = useState(1);
 
-  if (menuData === null) return <BannerSkimmers />;
+  if (menuData === null) return console.log("no data");
+
+  const menuItems = menuData?.data?.cards?.filter((data) => {
+    return data.groupedCard !== undefined;
+  });
+
   const categories =
-    menuData?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
+    menuItems?.[0]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
       (value) => {
         return (
           value?.card?.card?.["@type"] ===
