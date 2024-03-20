@@ -15,7 +15,6 @@ const Login = ({
     user
       ? user[phoneNumber]
         ? (() => {
-            console.log("working");
             setLoginSwitch("block");
             setLoginBtnShow("none");
             setUserNumber(phoneNumber);

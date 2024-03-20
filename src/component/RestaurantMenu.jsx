@@ -10,7 +10,7 @@ const RestaurantMenu = () => {
   const menuData = useRestaurantMenu(resId);
   const [showIndex, setShowIndex] = useState(1);
 
-  if (menuData === null) return console.log("no data");
+  if (menuData === null) return;
 
   const menuItems = menuData?.data?.cards?.filter((data) => {
     return data.groupedCard !== undefined;
