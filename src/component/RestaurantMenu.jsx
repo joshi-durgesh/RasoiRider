@@ -1,5 +1,4 @@
 import useRestaurantMenu from "../utils/useRestaurantMenu";
-import { BannerSkimmers } from "./Skimmer";
 import { useParams } from "react-router-dom";
 import RestaurantDetails from "./RestaurantDetails";
 import RestaurantCuisineCategory from "./RestaurantCuisineCategory";

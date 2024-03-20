@@ -3,7 +3,7 @@ import BannerSection from "./BannerSection";
 import TopBrandsSection from "./TopBrandsSection";
 import AllRestaurant from "./AllRestaurant";
 import { SWIGGY_API } from "../utils/constant";
-import { BodySkimmer } from "./Skimmer";
+import { BodyShimmer } from "./Shimmer";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import HeroSection from "./HeroSection";
 
@@ -17,7 +17,11 @@ const Body = () => {
   }, [location]);
 
   const fetchAllData = async () => {
-    const data = await fetch(SWIGGY_API + location);
+    const data = await fetch(
+      `https://api.allorigins.win/raw?url=${encodeURIComponent(
+        SWIGGY_API + location
+      )}`
+    );
     const json = await data.json();
     console.log(json);
     setAllData(json?.data?.cards);
@@ -30,7 +34,7 @@ const Body = () => {
   }
 
   if (allData === null) {
-    return <BodySkimmer />;
+    return <BodyShimmer />;
   }
 
   const banData = allData?.filter((data) => {
@@ -40,28 +44,24 @@ const Body = () => {
     );
   });
 
-  console.log(banData);
   const topData = allData?.filter((data) => {
     return (
       data?.card?.card?.gridElements?.infoWithStyle?.["@type"] ===
       "type.googleapis.com/swiggy.presentation.food.v2.FavouriteRestaurantInfoWithStyle"
     );
   });
-  console.log(topData);
   const restoTitle = allData?.filter((data) => {
     return (
       data?.card?.card?.["@type"] ===
       "type.googleapis.com/swiggy.seo.widgets.v1.BasicContent"
     );
   });
-  console.log(restoTitle);
   const restoData = allData?.filter((data) => {
     return (
       data?.card?.card?.gridElements?.infoWithStyle?.["@type"] ===
       "type.googleapis.com/swiggy.presentation.food.v2.FavouriteRestaurantInfoWithStyle"
     );
   });
-  console.log(restoData);
   const bannerData = banData?.[0]?.card?.card;
   const topBrandData = topData?.[0]?.card?.card;
   const allRestoSectionTitle = restoTitle?.[0]?.card?.card?.title;
