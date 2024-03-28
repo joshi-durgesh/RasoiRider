@@ -8,7 +8,12 @@ const useRestaurantMenu = (resId) => {
   }, []);
 
   const fetchMenu = async () => {
-    const data = await fetch(MENU_API + resId);
+    const data = await fetch(
+      `https://api.allorigins.win/raw?url=${encodeURIComponent(
+        MENU_API + resId
+      )}`
+    );
+
     const json = await data.json();
     setMenuData(json);
   };
